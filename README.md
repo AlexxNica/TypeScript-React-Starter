@@ -375,14 +375,8 @@ Let's start off by creating a set of message types that our app can respond to i
 // src/constants/index.tsx
 
 export const INCREMENT_ENTHUSIASM = 'INCREMENT_ENTHUSIASM';
-export type INCREMENT_ENTHUSIASM = typeof INCREMENT_ENTHUSIASM;
-
-
 export const DECREMENT_ENTHUSIASM = 'DECREMENT_ENTHUSIASM';
-export type DECREMENT_ENTHUSIASM = typeof DECREMENT_ENTHUSIASM;
 ```
-
-This `const`/`type` pattern allows us to use TypeScript's string literal types in an easily accessible and refactorable way.
 
 Next, we'll create a set of actions and functions that can create these actions in `src/actions/index.tsx`.
 
@@ -390,11 +384,11 @@ Next, we'll create a set of actions and functions that can create these actions 
 import * as constants from '../constants'
 
 export interface IncrementEnthusiasm {
-    type: constants.INCREMENT_ENTHUSIASM;
+    type: typeof constants.INCREMENT_ENTHUSIASM;
 }
 
 export interface DecrementEnthusiasm {
-    type: constants.DECREMENT_ENTHUSIASM;
+    type: typeof constants.DECREMENT_ENTHUSIASM;
 }
 
 export type EnthusiasmAction = IncrementEnthusiasm | DecrementEnthusiasm;
